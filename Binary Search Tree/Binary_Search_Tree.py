@@ -114,21 +114,11 @@ class BST:
 		left = self.depth_recur(so_far + 1 , val , node.left)
 		right = self.depth_recur(so_far+1 ,   val , node.right)
 		return max(left , right)
+	
 		
 class Node:
 	def __init__(self):
 		self.val = 0
 		self.left = self.right = None
 
-   
-tree = BST()
-tree.set_root(0)
-tree.insert(1)
-tree.insert(-1)
-tree.insert(2)
-tree.insert(5)
-tree.insert(44)
-tree.insert(-22)
-print(tree.get_node_depth(0))
-print(tree.get_node_depth(-22))
-print(tree.get_node_depth(5))
+
