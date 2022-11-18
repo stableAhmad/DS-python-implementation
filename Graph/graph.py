@@ -10,8 +10,8 @@
         2-connect two nodes
         3-delete a node
         4-print 
-        5-get vertices  (supposing v and e are private fields)
-        6-get edges
+        5-get v ( vertices , supposing v and e are private fields)
+        6-get e  (edges :private field)
         7-disconnect two nodes
         
 
@@ -35,7 +35,7 @@ class AL_Graph:
             self.e+=1
         else:
             print("one or both of the vertices are not in the graph")
-    def diconnect_two_nodes(self , name1 , name2):  #assuming name1 and name2 are already connected
+    def disconnect_two_nodes(self , name1 , name2):  #assuming name1 and name2 are already connected
         if name1 in self.adjacency_list and name2 in self.adjacency_list:
             self.adjacency_list[name1].remove(name2)
             self.adjacency_list[name2].remove(name1)
@@ -46,7 +46,22 @@ class AL_Graph:
     def get_v(self):
         return self.v
 
+    def print(self):
+        for key in self.adjacency_list.keys():
+            print(key , end="->")
+            for item in self.adjacency_list[key]:
+                print(item ,end = " ")
+            print("")
     def get_e(self):
         return self.e
 
+    def remove_node(self,  name):
+        to_be_moded = []
+        for item in self.adjacency_list[name]:
+            to_be_moded.append(item)
+        del self.adjacency_list[name]
+        for mod in to_be_moded:
+            self.adjacency_list[mod].remove(name)
+        self.v-=1
+        self.e -= len(to_be_moded)
 
