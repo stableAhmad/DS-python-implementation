@@ -23,12 +23,13 @@ class Q:
         if(self.size == 0):
             print("nothing to delete")
             return
-        print(self.head)
-        self.head = None
+        print(self.head.val)
         current = self.tail
         while(current):
-            if current.next == None:
+            if current.next.next == None:
                 self.head = current
+                current.next = None
+                break
             else:
                 current = current.next
         self.size-=1 
@@ -45,15 +46,6 @@ class Node:
 
 
    
-
-test = Q()
-test.add(1)
-test.add(2)
-test.add(3)
-test.add(4)
-test.print()
-
-
 
 
 
